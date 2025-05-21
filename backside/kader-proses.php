@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } elseif (isset($_POST['open'])) {
         $nama_open = $_POST['open'];
 
-        $callout = $pdo_conne->prepare("SELECT * FROM `bayi` WHERE `nama` ='$nama_open'");
+        $callout = $pdo_conne->prepare("SELECT * FROM `bayi` WHERE `nama` ='$nama_open' ORDER BY `id` DESC ");
         $callout->execute();
         $_SESSION['kader_out'] = "";
         foreach ($callout->fetchAll(PDO::FETCH_ASSOC) as $c) {
