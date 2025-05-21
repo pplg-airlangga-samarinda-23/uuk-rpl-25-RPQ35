@@ -19,8 +19,11 @@
 <main>
 
 <table>
-    <thead class="sticky bg-blue-300">
-        <th class="text-m">no</th>
+    <thead class="sticky top-10">
+        <th class="text-m bg-blue-300 rounded-l-lg">no</th>
+        <th class="text-m bg-blue-300">username</th>
+        <th class="text-m bg-blue-300">Password</th>
+        <th class="text-m bg-blue-300 rounded-r-lg">role</th>
         
     </thead>
     <tbody class="bg-stone-200"></tbody>
