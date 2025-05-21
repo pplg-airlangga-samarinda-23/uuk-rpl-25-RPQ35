@@ -17,7 +17,7 @@
     </section>
 </header>
 
-<main>
+<main class="lg:flex lg:flex-row lg:gap-x-20 ">
 
     <table class="table">
         <thead class="sticky top-100 w-80">
@@ -44,16 +44,58 @@
                     <td><?= $row['password'] ?></td>
                     <td><?= $row['role'] ?></td>
                     <td>
-                        <form action="backside/admin-proses.php" method="get" class="flex flex-row items-center justify-center">
+                        <form action="backside/admin-proses.php" method="post" class="flex flex-row items-center justify-center">
                             <button class=" rounded-full hover:bg-yellow-200" value="<?= $row['id'] ?>" name="admin-open">open</button>
                         </form>
                     </td>
                 </tr>
 
             <?php
-            $index++;
+                $index++;
             }
             ?>
         </tbody>
+        <tfoot class="bg-blue-300">
+            <form action="backside/admin-proses.php" method="post">
+                <td>new</td>
+                <td><input type="text" name="usn" id="" class="rounded-lg border border-black"></td>
+                <td><input type="text" name="psw" id="" class="rounded-lg border border-black"></td>
+                <td><select name="role" id="" class="rounded-lg border border-black">
+                    <option value="andmin">administrator</option>
+                    <option value="kader">member</option>
+                </select></td>
+                <td class="flex flex-row items-center justify-center">
+                    <button name="add" class="bg-green-500 text-center rounded-lg border border-black p-px">add new</button>
+                </td>
+            </form>
+        </tfoot>
+
+
     </table>
+
+    <section class="w-48 h-64 my-10 sticky">
+        <div class="bg-blue-300 w-52 h-1/6 flex flex-row items-center justify-center">
+            <h2 class="text-m"><?= $_SESSION['nama_admin'] ?></h2>
+        </div>
+        <div class="bg-amber-300 h-5/6 w-52">
+            <form action="backside/admin-proses.php" method="post" class="flex flex-col p-1">
+                <label for="">role</label>
+                <select name="rol-in" id="">
+                    <option value="kader" <?php if ($_SESSION['rol'] == "kader") {
+                                                echo "selected";
+                                            } ?>>member</option>
+                    <option value="andmin" <?php if ($_SESSION['rol'] == "andmin") {
+                                                echo "selected";
+                                            } ?>>administrator</option>
+
+                </select>
+                <div class="flex flex-row gap-x-2 mt-12">
+                    <button type="submit" value="<?=$_SESSION['id-in']?>" name="admin_update" class="bg-green-500 rounded-full">update</button>
+                    <button name="restes" value="<?=$_SESSION['id-in']?>" class="bg-red-500 rounded-full">remove</button>
+                </div>
+        </div>
+
+        </form>
+        </div>
+    </section>
 </main>
