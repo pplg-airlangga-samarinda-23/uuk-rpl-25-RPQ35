@@ -9,7 +9,7 @@
 </head>
 <?php include "db-con.php"; ?>
 
-<body class="flex flex-col items-center">
+<body class="flex flex-col items-center gap-y-10">
 
     <?php
     // var_dump($_SESSION['login']);
