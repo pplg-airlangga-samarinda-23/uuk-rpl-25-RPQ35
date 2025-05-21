@@ -55,23 +55,32 @@
             }
             ?>
         </tbody>
+        <tfoot class="bg-amber-200 py-px">
+            <form action="backside/kader-proses.php" method="post">
+                <td>new</td>
+                <td><input type="text"   name="nimang" id="" class="border border-black rounded-lg"></td>
+                <td><input type="number" name="niming" id="" class="border border-black rounded-lg"></td>
+                <td><input type="number" name="nimong" id="" class="border border-black rounded-lg"></td>
+                <td><button name="adder" class="bg-green-500 rounded-xl border border-black p-px hover:bg-green-700">add new</button></td>
+            </form>
+        </tfoot>
     </table>
 
-    <section class="w-48 h-64 my-10">
+    <section class="w-48 h-64 my-10 sticky">
         <div class="bg-blue-300 w-52 h-1/6 flex flex-row items-center justify-center">
-            <h2 class="text-m">sigma</h2>
+            <h2 class="text-m"><?= $_SESSION['nama_bayi'] ?></h2>
         </div>
         <div class="bg-amber-300 h-5/6 w-52">
-            <form action="backside/kader-proses" method="post" class="flex flex-col p-1">
+            <form action="backside/kader-proses.php" method="post" class="flex flex-col p-1">
                 <label for="">berat badan</label>
-                <input type="text" name="berat_bayi" id="">
+                <input type="number" name="berat_bayi" id="" value="<?= $_SESSION['berat-an'] ?>">
                 <label for="">tinggi badan</label>
-                <input type="text" name="tinggi_bayi" id="">
+                <input type="number" name="tinggi_bayi" id="" value="<?= $_SESSION['tinggi-an'] ?>">
                 <div class="flex flex-row gap-x-12 mt-20">
-                    <button name="open" class="bg-yellow-500 rounded-full">full data</button>
+                    <button name="open" class="bg-yellow-500 rounded-full" value="<?= $_SESSION['nama_bayi'] ?>">full data</button>
                     <div class="flex flex-row gap-x-2 ">
-                        <button type="submit" name="bayi_update" class="bg-green-500 rounded-full">update</button>
-                        <button type="reset" class="bg-red-500 rounded-full">reset</button>
+                        <button type="submit" value="<?= $_SESSION['nama_bayi'] ?>" name="bayi_update" class="bg-green-500 rounded-full">update</button>
+                        <button name="restes" class="bg-red-500 rounded-full">reset</button>
                     </div>
                 </div>
 
@@ -79,3 +88,19 @@
         </div>
     </section>
 </main>
+<?php
+if (isset($_POST['paham'])) {
+    unset($_POST['paham']);
+    unset($_SESSION['pesanan']);
+}
+if ($_SESSION['pesanan'] != null) {
+?>
+    <div id="pesan" class="fixed bg-red-400 w-48 h-48 mt-48 p-8">
+        <h2 class="text-m font-bold"><?= $_SESSION['pesanan'] ?></h2>
+        <form action="" method="post">
+            <button class="w-14 h-14 bg-green-500 rounded-full mt-5" name="paham">paham</button>
+        </form>
+    </div>
+
+<?php }
+?>

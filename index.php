@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+//  ini_set('display_errors', 0);
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +20,7 @@
         if ($_SESSION['pesan']) {
             echo "salah username atau password ";
         }
-        
+
     ?>
         <form action="backside/login.php" method="post" class="flex flex-col">
             <div class="flex flex-col h-56 w-64 bg-green-700 p-5">
@@ -31,7 +34,7 @@
         </form>
 
     <?php
-    } else if($_SESSION['login']==true) {
+    } else if ($_SESSION['login'] == true) {
         include 'caller.php';
     }
     ?>
