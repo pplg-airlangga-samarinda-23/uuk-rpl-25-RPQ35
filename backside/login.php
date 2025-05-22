@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header('location:../');
         } else {
             $_SESSION['pesan'] = true;
-            header("location : ../");
+            header('location:../');
         }
     }
 }
